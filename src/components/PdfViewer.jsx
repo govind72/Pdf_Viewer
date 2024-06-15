@@ -7,7 +7,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import CloseIcon from '@mui/icons-material/Close';
-import { Padding } from '@mui/icons-material';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -67,18 +66,24 @@ export default function PdfViewer() {
     top: '10%',
     left: '50%',
     transform: 'translate(-50%, 0)',
-    width: '50%',
+    width: '80%',
     maxHeight: '80vh',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 2,
     display: 'flex',
     flexDirection: 'column',
+    '@media (max-width: 600px)': {
+      width: '90%',
+      top: '5%',
+      maxHeight: '90vh',
+    },
   };
 
   const documentContainerStyle = {
     flexGrow: 1,
     overflow: 'auto',
+    textAlign: 'center',
   };
 
   const footerStyle = {
@@ -86,6 +91,18 @@ export default function PdfViewer() {
     justifyContent: 'space-between',
     alignItems: 'center',
     mt: 2,
+    '@media (max-width: 600px)': {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+  };
+
+  const buttonGroupStyle = {
+    display: 'flex',
+    '@media (max-width: 600px)': {
+      width: '100%',
+      justifyContent: 'space-between',
+    },
   };
 
   return (
@@ -123,7 +140,7 @@ export default function PdfViewer() {
             </Box>
           )}
           <Box sx={footerStyle}>
-            <Box>
+            <Box sx={buttonGroupStyle}>
               <Button
                 type="button"
                 disabled={pageNumber <= 1}
