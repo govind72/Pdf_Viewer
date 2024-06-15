@@ -66,7 +66,7 @@ export default function PdfViewer() {
     top: '10%',
     left: '50%',
     transform: 'translate(-50%, 0)',
-    width: '80%',
+    width: '50%',
     maxHeight: '80vh',
     bgcolor: 'background.paper',
     boxShadow: 24,
